@@ -18,14 +18,11 @@ const NewPrompt = ({ data }) => {
 
   const chat = model.startChat({
     history: [
-      data?.history.map(({ role, parts }) => ({
-        role,
-        parts: [{ text: parts[0].text }],
-      })),
+      {
+        role: data.history[0].role,
+        parts: [{ text: data.history[0].parts[0].text }],
+      }
     ],
-    generationConfig: {
-      // maxOutputTokens: 100,
-    },
   });
 
   const endRef = useRef(null);
